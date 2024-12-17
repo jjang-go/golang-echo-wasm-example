@@ -31,6 +31,12 @@ func RunServer(port int) {
 
 	e.Static("/", "web")
 
+	e.GET("/health", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, map[string]string{
+			"status": "UP",
+		})
+	})
+
 	routers.MainRoute(e.Group(""))
 
 	routers.ApiV1Route(e.Group("api/v1"))
