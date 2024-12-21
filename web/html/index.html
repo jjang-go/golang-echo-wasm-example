@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>{{.Title}}</title>
-    </head>
-    <body>
-        <h1>{{.Message}}</h1>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAssembly Arithmetic</title>
+    <script src="js/wasm_exec.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body>
+    <h1>Go WebAssembly 사칙연산</h1>
+    <form>
+        <input id="value1" type="number" placeholder="첫 번째 숫자" required />
+        <input id="value2" type="number" placeholder="두 번째 숫자" required />
+    </form>
+    <button onclick="performAddition()">덧셈</button>
+    <button onclick="performSubtraction()">뺄셈</button>
+    <button onclick="performMultiplication()">곱셈</button>
+    <button onclick="performDivision()">나눗셈</button>
+    <textarea id="output" rows="5" readonly placeholder="결과가 여기에 표시됩니다"></textarea>
+</body>
 </html>
