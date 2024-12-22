@@ -31,17 +31,7 @@ func RunServer(port int) {
 
 	e.Static("/", "web")
 
-	e.GET("/health", func(c echo.Context) error {
-		return c.JSON(http.StatusOK, map[string]string{
-			"status": "UP",
-		})
-	})
-
 	routers.MainRoute(e.Group(""))
-
-	routers.ApiV1Route(e.Group("api/v1"))
-
-	routers.ApiV2Route(e.Group("api/v2"))
 
 	if err := e.Start(fmt.Sprintf(":%d", port)); err != nil && err != http.ErrServerClosed {
 		e.Logger.Error(err)
