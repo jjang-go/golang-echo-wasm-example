@@ -22,6 +22,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var port int
+
 // serverCmd represents the server command
 var serverCmd = &cobra.Command{
 	Use:   "server",
@@ -36,7 +38,7 @@ to quickly create a Cobra application.`,
 		return build.Build()
 	},
 	Run: func(cmd *cobra.Command, args []string) {
-		app.RunServer(8000)
+		app.RunServer(port)
 	},
 	PersistentPostRunE: func(cmd *cobra.Command, args []string) error {
 		return build.Clean()
@@ -45,4 +47,5 @@ to quickly create a Cobra application.`,
 
 func init() {
 	rootCmd.AddCommand(serverCmd)
+	serverCmd.Flags().IntVarP(&port, "port", "p", 8080, "use port")
 }
